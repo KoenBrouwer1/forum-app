@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
-  <title>Napper Home</title>
+  <title>forum</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
 </head>
 
 <body>
+
   <nav class="fixed top-0 left-0 w-full z-50 bg-white/0 border-gray-200 dark:bg-gray-900/0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -40,12 +41,22 @@
       </div>
     </div>
   </nav>
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="grid grid-cols-5 grid-rows-5 gap-4 w-full max-w-6xl p-6">
+      <div class="col-span-4 row-span-4 bg-white rounded-lg shadow p-6 dark:bg-gray-800 dark:text-white">feed</div>
+      <!-- <div class="col-start-3 row-start-5 bg-white p-4 rounded-lg shadow dark:bg-gray-800 dark:text-white"></div> -->
+      <div class="col-start-1 row-start-5 bg-white p-4 rounded-lg shadow dark:bg-gray-800 dark:text-white">Search</div>
+      <div class="col-start-4 row-start-5 flex justify-center items-center bg-white p-4 rounded-lg shadow dark:bg-gray-900 dark:text-white">
+        <button
+          class="float-right bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all text-white font-semibold rounded-lg px-7 py-3 shadow-md">
+          Create Post
+        </button>
+      </div>
+      <div class="row-span-6 col-start-5 row-start-1 bg-white p-4 rounded-lg shadow dark:bg-gray-800 dark:text-white">profile</div>
+    </div>
 
-  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 ">
-    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Welcome to Napper</h1>
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">Lorem ipsum dolor sit amet consectetur.</p>
-    <a href="Forum" class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Start talking</a>
   </div>
+
 </body>
 
 </html>
