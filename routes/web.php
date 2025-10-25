@@ -14,3 +14,6 @@ Route::get('/Register', function () {
 Route::get('/Forum', function () {
     return view('forum');
 });
+Route::get('/CreatePost', function () {
+    return view('createpost');
+});
