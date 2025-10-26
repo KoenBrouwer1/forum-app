@@ -18,6 +18,12 @@ Route::get('/Forum', function () {
 Route::get('/CreatePost', function () {
     return view('createpost');
 });
+Route::get('/Account', function () {
+    return view('account');
+});
+Route::get('/EditProfile', function () {
+    return view('editprofile');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

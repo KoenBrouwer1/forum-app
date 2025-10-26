@@ -49,7 +49,7 @@
 
           <!-- profile card -->
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-3">
-          <p class="text-center font-semibold">Placeholder Name</p>
+          <p class="text-center font-semibold">{{ Auth::user()->name }}</p>
         </div>
         <!-- profile card end -->
 

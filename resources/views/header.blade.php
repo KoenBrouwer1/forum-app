@@ -19,12 +19,21 @@
          <li>
            <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100/0 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700/0 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
          </li>
-         <li>
-           <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100/0 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700/0 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+         <form class="m-0" method="POST" action="{{ route('logout') }}">
+           @csrf
+           <button type="submit" class="bg-red-600 block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100/0 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700/0 dark:hover:text-white md:dark:hover:bg-transparent">Logout</button>
+         </form>
          </li>
+         @auth
+         <li>
+           <a href="Account" class="px-3 py-2 bg-blue-600/80 text-white rounded-lg hover:bg-blue-700/80 transition">{{ Auth::user()->name }}</a>
+         </li>
+         @endauth
+         @guest
          <li>
            <a href="login" class="px-3 py-2 bg-blue-600/80 text-white rounded-lg hover:bg-blue-700/80 transition">Login / Register</a>
          </li>
+         @endguest
        </ul>
      </div>
    </div>
