@@ -1,7 +1,7 @@
 <!-- BEGIN NAV -->
 <nav class="fixed top-0 left-0 w-full z-50 bg-white/0 border-gray-200 dark:bg-gray-900/0">
 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="/forum-laravel/forum-app/public/" class="flex items-center space-x-3 rtl:space-x-reverse">
+  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
     <img src="{{ asset('img/Napper-logoV2.png') }}" class="h-10" alt="Napper Logo" />
     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Napper</span>
   </a>

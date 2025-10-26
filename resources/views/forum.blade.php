@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>forum</title>
+  <title>Napper | Forum</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
 </head>
@@ -54,7 +54,7 @@
         <!-- profile card end -->
 
 
-        <a href="/forum-laravel/forum-app/public/CreatePost" class=" mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
+        <a href="CreatePost" class="text-center mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
           Create Post
         </a>
       </div>
