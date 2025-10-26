@@ -24,6 +24,9 @@ Route::get('/Account', function () {
 Route::get('/EditProfile', function () {
     return view('editprofile');
 });
+Route::get('/ViewProfile', function () {
+    return view('viewprofile');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
