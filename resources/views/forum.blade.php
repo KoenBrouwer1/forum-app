@@ -27,18 +27,23 @@
 
       <main class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-lg shadow overflow-y-auto space-y-4">
         <!-- Post Card -->
+        @foreach ($posts as $post)
         <article class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow hover:shadow-lg transition">
           <div class="flex items-center mb-3">
             <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile picture" class="w-10 h-10 rounded-full">
-            <h1 class="ml-3 text-lg font-semibold text-gray-800 dark:text-white">USER</h1>
+            <h1 class="ml-3 text-lg font-semibold text-gray-800 dark:text-white"><?= $post->title ?></h1>
           </div>
-          <p class="text-gray-700 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit, nisi. Et sit dolor expedita pariatur nihil ullam omnis fuga nisi voluptatum tenetur asperiores obcaecati, quibusdam quia blanditiis, ea ut quas. :[ </p>
+          <p class="text-gray-700 dark:text-gray-300"><?= $post->content ?></p>
           <div class="mt-4 flex justify-end space-x-3">
             <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like" onclick="">
             <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply" onclick="">
           </div>
         </article>
+        @endforeach
         <!-- Post card end -->
+        @if ($posts->isEmpty())
+        <p class="text-white text-xl text-center text-gray-500">No posts yet 😢</p>
+        @endif
       </main>
 
 
@@ -46,13 +51,11 @@
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow text-gray-900 dark:text-white flex flex-col justify-between">
         <div>
           <h2 class="text-xl font-semibold mb-4">Profile</h2>
-
           <!-- profile card -->
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-3">
           <p class="text-center font-semibold">{{ Auth::user()->name }}</p>
         </div>
         <!-- profile card end -->
-
 
         <a href="CreatePost" class="text-center mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
           Create Post
