@@ -31,7 +31,8 @@
         <article class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow hover:shadow-lg transition">
           <div class="flex items-center mb-3">
             <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile picture" class="w-10 h-10 rounded-full">
-            <h1 class="ml-3 text-lg font-semibold text-gray-800 dark:text-white"><?= $post->title ?></h1>
+            <h2 class="text-xl text-white font-semibold"><?= $post->user->name ?></h2>
+            <h1 class="ml-3 text-lg ml-auto font-semibold text-gray-800 dark:text-white"><?= $post->title ?></h1>
           </div>
           <p class="text-gray-700 dark:text-gray-300"><?= $post->content ?></p>
           <div class="mt-4 flex justify-end space-x-3">
@@ -41,9 +42,6 @@
         </article>
         @endforeach
         <!-- Post card end -->
-        @if ($posts->isEmpty())
-        <p class="text-white text-xl text-center text-gray-500">No posts yet 😢</p>
-        @endif
       </main>
 
 
