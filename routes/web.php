@@ -3,16 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/Login', function () {
     return view('login');
 });
+
 Route::get('/Register', function () {
     return view('register');
 });
+
 Route::get('/Forum', function () {
     return view('forum');
 })->middleware(['auth', 'verified'])->name('forum');
@@ -20,6 +22,7 @@ Route::get('/Forum', function () {
 Route::get('/CreatePost', function () {
     return view('createpost');
 })->middleware(['auth', 'verified'])->name('createpost');
+
 Route::get('/Account', function () {
     return view('account');
 })->middleware(['auth', 'verified'])->name('account');
