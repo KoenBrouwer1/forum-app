@@ -8,5 +8,5 @@ class ContactController{
 
         $users = User::all();
         return view('addcontact', compact('users'));
-    }
+    }  
 }

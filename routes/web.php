@@ -48,10 +48,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/Forum', [PostController::class, 'create'])->name('posts.create');
-    Route::post('/Forum', [PostController::class, 'store'])->name('posts.store');
-    Route::get('/Forum', [PostController::class, 'posting'])->name('posts.posting');
-    Route::get('/AddContact', [ContactController::class, 'allusers'])->name('contacts.all');
+    Route::get('/Forum', [PostController::class, 'posting'])->name('forum'); // toont posts
+    Route::get('/CreatePost', [PostController::class, 'create'])->name('posts.create'); // toont create form
+    Route::post('/CreatePost', [PostController::class, 'store'])->name('posts.store'); // slaat post op
+    Route::get('/AddContact', [ContactController::class, 'allusers'])->name('contacts.add');
+    Route::post('/AddContact', [ContactController::class, 'store'])->name('contacts.store');
 });
+
 
 require __DIR__.'/auth.php';

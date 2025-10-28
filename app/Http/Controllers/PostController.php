@@ -10,14 +10,14 @@ class PostController extends Controller
 {
   public function create()
   {
-    return view('posts.create');
+    return view('createpost');
   }
 
   public function store(Request $request)
   {
     $request->validate([
       'title' => 'required|string|max:255',
-      'content' => 'required|string',
+      'content' => 'required|string|max:1000',
       'image' => 'nullable|image|max:2048',
     ]);
 
@@ -33,7 +33,6 @@ class PostController extends Controller
       'user_id' => Auth::id(),
     ]);
 
-    return redirect()->back()->with('success', 'Post created!');
   }
   public function posting()
   {

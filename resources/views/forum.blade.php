@@ -20,7 +20,7 @@
         <!-- contacts card -->
         <div onclick="" class="mt-4 flex items-center space-x-3 cursor-pointer">
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-8 h-8 rounded-full">
-          <p class="font-semibold">Placeholder name</p>
+          <p class="font-semibold">Placeholder Name</p>
         </div>
         <!-- contacts card end -->
       </div>
@@ -42,6 +42,9 @@
         </article>
         @endforeach
         <!-- Post card end -->
+        <div class=" m-0">
+          <button class="text-center mt-6 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg px-4 py-3">Featured Posts</button>
+        </div>
       </main>
 
 
@@ -51,7 +54,7 @@
           <h2 class="text-xl font-semibold mb-4">Profile</h2>
           <!-- profile card -->
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-3">
-          <p class="text-center font-semibold">{{ Auth::user()->name }}</p>
+          <p class="text-center font-bold">{{ Auth::user()->name }}</p>
         </div>
         <!-- profile card end -->
 

@@ -46,7 +46,7 @@
 
               <div class="flex justify-end mt-6">
                 <a href="/" type="button" class="mr-auto text-white font-bold rounded-lg py-3 px-4">Cancel</a>
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3 px-4 inline-flex items-center">post</button>
+                  <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3 px-4 inline-flex items-center">post</button>
               </div>
               <div>
           </form>
