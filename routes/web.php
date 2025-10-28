@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
@@ -35,6 +36,10 @@ Route::get('/ViewProfile', function () {
     return view('viewprofile');
 })->middleware(['auth', 'verified'])->name('viewprofile');
 
+Route::get('/AddContact', function () {
+    return view('addcontact');
+})->middleware(['auth', 'verified'])->name('addcontact');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -46,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/Forum', [PostController::class, 'create'])->name('posts.create');
     Route::post('/Forum', [PostController::class, 'store'])->name('posts.store');
     Route::get('/Forum', [PostController::class, 'posting'])->name('posts.posting');
+    Route::get('/AddContact', [ContactController::class, 'allusers'])->name('contacts.all');
 });
 
 require __DIR__.'/auth.php';
