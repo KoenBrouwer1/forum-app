@@ -35,6 +35,9 @@
             <h1 class="ml-3 text-lg ml-auto font-semibold text-gray-800 dark:text-white">{{ $post->title }}</h1>
           </div>
           <p class="text-gray-700 dark:text-gray-300">{{ $post->content }}</p>
+          @if ($post -> image)
+          <img src="{{ asset('storage/' . $post->image) }}" class=" h-25 object-cover">
+          @endif
           <div class="mt-4 flex justify-end space-x-3">
             <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like" onclick="">
             <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply" onclick="">

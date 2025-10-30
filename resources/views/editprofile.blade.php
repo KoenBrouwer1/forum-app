@@ -15,14 +15,18 @@
       <div class="flex flex-col items-center pb-10">
         <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ asset('img/Napper-logoV2.png') }}" alt="PFP" />
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Edit Profile picture</h5>
-        <label for="image" class="bg-blue-600 hover:bg-blue-700 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-blue-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer inline-block text-center mt-6">
+        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-4 md:space-y-6">
+          @csrf
+        <label for="photo" class="bg-blue-600 hover:bg-blue-700 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-blue-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer inline-block text-center mt-6">
           Upload image
         </label>
         <input
           type="file"
-          name="image"
-          id="image"
-          class="hidden" />
+          name="photo"
+          id="photo"
+          class="" />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3 px-4 inline-flex items-center">update</button>
+        </form> 
       </div>
     </div>
 </body>
