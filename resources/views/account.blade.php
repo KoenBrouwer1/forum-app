@@ -45,7 +45,9 @@
         <!-- Info -->
         <div class="pt-16 pb-6 text-center">
           <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ Auth::user()->name }}</h5>
-          <span class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</span>
+          <span class="m-1 text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->created_at }}</span>
+
 
           <div class="flex justify-center mt-6 space-x-3">
             <a href="EditProfile" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg dark:bg-blue-600">Edit Profile</a>

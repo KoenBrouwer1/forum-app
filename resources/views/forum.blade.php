@@ -11,7 +11,7 @@
 
 <body>
   <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center py-6 px-4">
-    <div class="flex w-full max-w-6xl gap-6">
+    <d class="flex w-full max-w-6xl gap-6">
 
       <!--  Left Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow text-gray-900 dark:text-white">
@@ -32,12 +32,16 @@
           <div class="flex items-center mb-3">
             <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile picture" class="w-10 h-10 rounded-full">
             <h2 class="text-xl text-white font-semibold">{{ $post->user->name }}</h2>
-            <h1 class="ml-3 text-lg ml-auto font-semibold text-gray-800 dark:text-white">{{ $post->title }}</h1>
+            <h1 class="ml-3 text-lg ml-auto font-bold text-gray-800 dark:text-white">{{ $post->title }}</h1>
           </div>
           <p class="text-gray-700 dark:text-gray-300">{{ $post->content }}</p>
+
           @if ($post -> image)
-          <img src="{{ asset('storage/' . $post->image) }}" class=" h-25 object-cover">
+          <p>{{ $post->image }}</p> 
+          <img src="{{ asset('storage/' . $post->image) }}" class="mt-4 h-[200px] object-cover rounded-lg">
           @endif
+
+
           <div class="mt-4 flex justify-end space-x-3">
             <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like" onclick="">
             <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply" onclick="">
@@ -65,7 +69,7 @@
           Create Post
         </a>
       </div>
-    </div>
+    </d iv>
   </div>
 </body>
 
