@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-  public function create()
+  public function createpost()
   {
     return view('createpost');
   }
 
-  public function store(Request $request)
+  public function storepost(Request $request)
   {
     $request->validate([
       'title' => 'required|string|max:255',
@@ -32,9 +32,9 @@ class PostController extends Controller
       'image' => $path,
       'user_id' => Auth::id(),
     ]);
-
+    return redirect('/Forum')->with('success');
   }
-  public function posting()
+  public function postingpost()
   {
     $posts = Post::latest()->get(); // haalt alle posts op, nieuwste eerst
     return view('Forum', compact('posts'));
