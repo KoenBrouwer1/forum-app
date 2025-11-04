@@ -3,7 +3,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: mysql-container
-    restart: always
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: testdb
@@ -17,7 +17,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: PHPmyadmin
-    restart: always
+    restart: on-failure
     ports:
       - "8080:80"
     environment:
