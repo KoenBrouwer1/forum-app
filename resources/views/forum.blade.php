@@ -36,7 +36,11 @@
           <a href="#" class="block bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl ">
             <!-- Category Badge -->
             <div class="flex items-center justify-between px-4 pt-4">
+              @if($topic->topic)
               <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{$topic->topic}}</span>
+              @else
+              <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">All</span>
+              @endif
               <span class="text-xs text-gray-400 dark:text-gray-500">{{$topic->user->name}}</span>
             </div>
 
@@ -46,7 +50,7 @@
                 {{$topic->title}}
               </h3>
               <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-3">
-               {{$topic->content  }}
+                {{$topic->content }}
               </p>
             </div>
 
@@ -54,12 +58,12 @@
               <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like" onclick="">
               <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply" onclick="">
             </div>
-            
+
           </a>
           @endforeach
         </div>
-      </main>  
-      
+      </main>
+
 
       <!-- Profile Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow text-gray-900 dark:text-white flex flex-col justify-between">
