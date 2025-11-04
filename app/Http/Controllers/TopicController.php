@@ -16,6 +16,7 @@ class TopicController extends Controller
   public function storetopic(Request $request)
   {
     $request->validate([
+      'topic' => 'nullable|string|max:20',
       'title' => 'required|string|max:50',
       'content' => 'required|string|max:200',
     ]);
