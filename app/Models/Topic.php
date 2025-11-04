@@ -13,6 +13,7 @@ class Topic extends Model
     'user_id',
     'title',
     'content',
+    'topic',
   ];
 
   public function user()

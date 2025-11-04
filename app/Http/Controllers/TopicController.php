@@ -23,6 +23,7 @@ class TopicController extends Controller
     Topic::create([
       'title' => $request->title,
       'content' => $request->content,
+      'topic' => $request->topic,
       'user_id' => Auth::id(),
     ]);
     return redirect('/Forum')->with('success', 'Topic created successfully!');

@@ -36,7 +36,7 @@
           <a href="#" class="block bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl ">
             <!-- Category Badge -->
             <div class="flex items-center justify-between px-4 pt-4">
-              <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">PC Tips</span>
+              <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{$topic->topic}}</span>
               <span class="text-xs text-gray-400 dark:text-gray-500">{{$topic->user->name}}</span>
             </div>
 
