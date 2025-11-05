@@ -24,7 +24,7 @@
           type="file"
           name="photo"
           id="photo"
-          class="" />
+          class="hidden" />
         <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3 px-4 inline-flex items-center">update</button>
         </form> 
       </div>

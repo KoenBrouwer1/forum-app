@@ -19,9 +19,9 @@
           <h1 class="text-xl font-bold text-blue-600 dark:text-blue-400">Napper</h1>
         </div>
         <nav class="space-y-2">
-          <a href="/yourposts" class="font-semibold block py-2 px-3 rounded-md hover:bg-blue-100 dark:hover:bg-gray-700 transition">Your Posts</a>
-          <a href="/forum" class="font-semibold block py-2 px-3 rounded-md hover:bg-blue-100 dark:hover:bg-gray-700 transition">Forum</a>
-          <a href="/account" class="block py-2 px-3 rounded-md bg-blue-600 text-white font-semibold">Account</a>
+          <a href="Yourposts" class="font-semibold block py-2 px-3 rounded-md hover:bg-blue-100 dark:hover:bg-gray-700 transition">Your Posts</a>
+          <a href="Forum" class="font-semibold block py-2 px-3 rounded-md hover:bg-blue-100 dark:hover:bg-gray-700 transition">Forum</a>
+          <a href="Account" class="block py-2 px-3 rounded-md bg-blue-600 text-white font-semibold">Account</a>
         </nav>
       </div>
       <form method="POST" action="{{ route('logout') }}" class="p-6">
@@ -44,14 +44,13 @@
 
         <!-- Info -->
         <div class="pt-16 pb-6 text-center">
-          <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ Auth::user()->name }}</h5>
-          <span class="m-1 text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</span>
+          <h5 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ Auth::user()->name }}</h5>
+          <h5 class="m-1 text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</h5>
           <span class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->created_at }}</span>
 
 
           <div class="flex justify-center mt-6 space-x-3">
             <a href="EditProfile" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg dark:bg-blue-600">Edit Profile</a>
-            <a href="ViewProfile" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-blue-700 border border-blue-700 rounded-lg dark:border-blue-600 hover:bg-blue-700 hover:text-white transition">View Profile</a>
           </div>
         </div>
 

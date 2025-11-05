@@ -71,7 +71,7 @@
           <h2 class="text-xl font-semibold mb-4">Profile</h2>
           <!-- profile card -->
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-3">
-          <p class="text-center font-bold">{{ Auth::user()->name }}</p>
+          <a href="Account" class="block text-center font-bold">{{ Auth::user()->name }}</a>
         </div>
         <!-- profile card end -->
 
