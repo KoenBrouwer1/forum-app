@@ -11,6 +11,7 @@ class Post extends Model
 
     protected $fillable = [
         'user_id',
+        'topic_id',
         'title',
         'content',
         'image',
@@ -19,5 +20,9 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
     }
 }

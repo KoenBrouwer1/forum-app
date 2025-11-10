@@ -10,7 +10,8 @@ class TopicController extends Controller
 {
   public function createtopic()
   {
-    return view('createtopic');
+    $topics = Topic::all(); // haal alle topics op
+    return view('createtopic', compact('topics'));
   }
 
   public function storetopic(Request $request)

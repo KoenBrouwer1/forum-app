@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
   public function createpost()
   {
-    return view('createpost');
+    $topics = Topic::all(); // haal alle topics op
+    return view('createpost', compact('topics'));
   }
 
   public function storepost(Request $request)
   {
     $request->validate([
       'title' => 'required|string|max:255',
+      'topic_id' => 'required|exists:topics,id',
       'content' => 'required|string|max:1000',
       'image' => 'nullable|image|max:2048',
     ]);
@@ -28,6 +31,7 @@ class PostController extends Controller
 
     Post::create([
       'title' => $request->title,
+      'topic_id' => $request->topic_id,
       'content' => $request->content,
       'image' => $path,
       'user_id' => Auth::id(),

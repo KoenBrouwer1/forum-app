@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @include('loginHeader')
+  @include('layouts/loginHeader')
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Napper | Create Topic</title>
 </head>
