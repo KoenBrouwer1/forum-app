@@ -39,7 +39,7 @@
               @if($topic->topic)
               <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{$topic->topic}}</span>
               @else
-              <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">All</span>
+              <span></span>
               @endif
               <span class="text-xs text-gray-400 dark:text-gray-500">{{$topic->user->name}}</span>
             </div>

@@ -38,6 +38,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/ResetPassword', function () {
+    return view('reset-password');
+})->middleware(['auth', 'verified'])->name('reset-password');
+
 
 
 Route::middleware('auth')->group(function () {

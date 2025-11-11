@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
     <title>Napper | Login</title>
-    @include('loginheader')
+    @include('layouts/loginheader')
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
