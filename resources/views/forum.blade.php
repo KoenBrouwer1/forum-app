@@ -22,7 +22,7 @@
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-8 h-8 rounded-full">
           <p class="font-semibold">Placeholder Name</p>
         </div>  
-        <a class="flex justify-center font-semibold" href="/">home</a>
+        {{-- <a class="flex justify-center font-semibold" href="/">home</a> --}}
         <!-- contacts card end -->
       </div>
       <main class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-lg shadow overflow-y-auto space-y-4">

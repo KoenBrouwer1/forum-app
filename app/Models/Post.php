@@ -21,8 +21,9 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function topic()
+    public function posts()
     {
-        return $this->belongsTo(Topic::class);
+        return $this->hasMany(Post::class);
     }
+    
 }

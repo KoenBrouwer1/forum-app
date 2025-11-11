@@ -18,9 +18,9 @@ class TopicFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'topic' => fake()->sentence(),
+            'topic' => fake()->words(1, true),
             'title' => fake()->sentence(),
-            'content' => fake()->paragraph(),    
+            'content' => fake()->paragraph(),
             ];
     }
 }

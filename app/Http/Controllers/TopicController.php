@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// files die hij gebruikt
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
@@ -10,18 +11,19 @@ class TopicController extends Controller
 {
   public function createtopic()
   {
-    $topics = Topic::all(); // haal alle topics op
-    return view('createtopic', compact('topics'));
+    $topics = Topic::all(); // haal alle topics op uit de database
+    return view('createtopic', compact('topics')); // stuurt de topics door aan de view
   }
 
   public function storetopic(Request $request)
   {
+    // checkt of de data goed onder deze regels valt
     $request->validate([
       'topic' => 'nullable|string|max:20',
       'title' => 'required|string|max:50',
-      'content' => 'required|string|max:200',
+      'content' => 'required|string|max:300',
     ]);
-
+    // maakt een nieuwe topic aan in de database
     Topic::create([
       'title' => $request->title,
       'content' => $request->content,
@@ -30,6 +32,7 @@ class TopicController extends Controller
     ]);
     return redirect('/Forum')->with('success', 'Topic created successfully!');
   }
+  // haalt topids en de user op en het nieuwste eerst
   public function postingtopic()
   {
     $topics = Topic::with('user')->latest()->get();
