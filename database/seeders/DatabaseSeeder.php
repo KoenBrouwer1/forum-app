@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@napper.com',
             'password' => ('admin1234'),
+            'is_admin' => 1,
         ]);
         
         Topic::factory(10)->create();

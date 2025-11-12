@@ -16,6 +16,10 @@
     <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Welcome to Napper</h1>
     <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">This is just a simple forum to connect and share ideas.</p>
     <a href="Forum" class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Start talking</a>
+    {{-- haal dit later weg --}}
+    @if (Auth::check() && Auth::user()->is_admin)
+    <h1 class="text-white">Only for Admins</h1> 
+    @endif
   </div>
 </body>
 

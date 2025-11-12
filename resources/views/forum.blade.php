@@ -7,34 +7,19 @@
   <title>Napper | Forum</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
+  @include('layouts.scrollbar')
 </head>
 
-<body>
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center py-6 px-4">
-    <div class="flex w-full max-w-6xl gap-6">
-
-      <!--  Left Sidebar -->
-      <div class="w-1/5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow text-gray-900 dark:text-white">
-        <h2 class="text-xl font-semibold mb-4">Search</h2>
-        <input type="text" placeholder="Search..." class="w-full px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 focus:outline-none">
-        <!-- contacts card -->
-        <div class="mt-4 flex items-center space-x-3 cursor-pointer">
-          <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-8 h-8 rounded-full">
-          <p class="font-semibold">Placeholder Name</p>
-        </div>  
-        {{-- <a class="flex justify-center font-semibold" href="/">home</a> --}}
-        <!-- contacts card end -->
-      </div>
-      <main class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-lg shadow overflow-y-auto space-y-4">
-        <!-- Post Card -->
-
-
-
-        <div class="flex flex-col gap-6 p-6 max-w-1xl mx-auto">
-          <!-- Topic Card-->
+<body class="m-0 p-0 overflow-x-hidden">
+  <div class="min-h-screen w-screen bg-gray-100 dark:bg-gray-900 flex justify-center items-stretch m-0 p-0">
+    <div class="flex w-full gap-0 flex-row-reverse m-0 p-0">
+      
+      <!-- Main content -->
+      <main class="flex-1 bg-white dark:bg-gray-800 p-6 overflow-y-auto space-y-4 m-0">
+        <div class="flex flex-col gap-6 p-6 w-full">
           @foreach($topics as $topic)
-          <a href="#" class="block bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl ">
-            <!-- Category Badge -->
+          <a href="#" class="block bg-white dark:bg-gray-700 shadow-md hover:shadow-xl rounded-xl overflow-hidden transition">
+            <!-- Header -->
             <div class="flex items-center justify-between px-4 pt-4">
               @if($topic->topic)
               <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">{{$topic->topic}}</span>
@@ -43,43 +28,50 @@
               @endif
               <span class="text-xs text-gray-400 dark:text-gray-500">{{$topic->user->name}}</span>
             </div>
-
-            <!-- Body  -->
+            
+            <!-- Body -->
             <div class="px-4 py-3">
               <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 line-clamp-2">
                 {{$topic->title}}
               </h3>
               <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-3">
-                {{$topic->content }}
+                {{$topic->content}}
               </p>
             </div>
-
+            
+            <!-- Footer -->
             <div class="flex items-center justify-end px-4 py-2 border-t border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-sm">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like" onclick="">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply" onclick="">
+              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like">
+              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply">
             </div>
-
           </a>
           @endforeach
         </div>
       </main>
 
-
+      <!-- Search Sidebar -->
+      <div class="w-1/5 bg-white dark:bg-gray-800 p-4 text-gray-900 dark:text-white">
+        <h2 class="text-xl font-semibold mb-4">Subjects</h2>
+        <div class="mt-4 flex items-center space-x-3 cursor-pointer">
+          <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-8 h-8 rounded-full">
+          <p class="font-semibold">Placeholder Name</p>
+        </div>
+      </div>
       <!-- Profile Sidebar -->
-      <div class="w-1/5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow text-gray-900 dark:text-white flex flex-col justify-between">
+      <div class="w-1/5 bg-white dark:bg-gray-900 p-4 text-gray-900 dark:text-white flex flex-col border-r border-gray-300 dark:border-gray-600">
         <div>
           <h2 class="text-xl font-semibold mb-4">Profile</h2>
-          <!-- profile card -->
-          <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-3">
-          <a href="Account" class="block text-center font-bold">{{ Auth::user()->name }}</a>
+          <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-1">
+          <a href="Account" class="block text-center font-bold mb-4">{{ Auth::user()->name }}</a>
         </div>
-        <!-- profile card end -->
         <a href="CreateTopic" class="text-center mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
           Create Topic
         </a>
       </div>
+
     </div>
   </div>
 </body>
+
 
 </html>
