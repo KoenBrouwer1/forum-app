@@ -52,10 +52,12 @@
       <!-- Search Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 text-gray-900 dark:text-white">
         <h2 class="text-xl font-semibold mb-4">Subjects</h2>
+        @foreach($subjects as $subject)
         <div class="mt-4 flex items-center space-x-3 cursor-pointer">
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-8 h-8 rounded-full">
-          <p class="font-semibold">Placeholder Name</p>
+          <p class="font-semibold">{{ $subject->subject }}</p>
         </div>
+        @endforeach
       </div>
       <!-- Profile Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-900 p-4 text-gray-900 dark:text-white flex flex-col border-r border-gray-300 dark:border-gray-600">

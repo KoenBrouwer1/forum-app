@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/CreateTopic', [TopicController::class, 'createtopic'])->name('topics.create'); // toont create form
     Route::post('/CreateTopic', [TopicController::class, 'storetopic'])->name('topics.store'); // slaat topic op
     Route::get('/Forum', [TopicController::class, 'postingtopic'])->name('forum'); // toont topics
+    Route::get('/Forum', [SubjectController::class, 'index'])->name('subjects.index'); // toont subjects
 });
 
 
