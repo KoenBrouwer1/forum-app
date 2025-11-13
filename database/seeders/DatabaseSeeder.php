@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Topic;
+use App\Models\Subject;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,5 +25,21 @@ class DatabaseSeeder extends Seeder
         ]);
         
         Topic::factory(10)->create();
+
+        Subject::factory()->create([
+            'subject' => 'Help',
+        ]);
+        Subject::factory()->create([
+            'subject' => 'Gaming',
+        ]);
+        Subject::factory()->create([
+            'subject' => 'PC Building',
+        ]);
+        Subject::factory()->create([
+            'subject' => 'Programming',
+        ]);
+        Subject::factory()->create([
+            'subject' => 'Tech News',
+        ]);
     }
 }
