@@ -27,9 +27,9 @@ class TopicController extends Controller
     ]);
     // maakt een nieuwe topic aan in de database
     Topic::create([
-      'title' => $request->title,
-      'content' => $request->content,
-      'topic' => $request->topic,
+      'title' => $request->input('title'),
+      'content' => $request->input('content'),
+      'topic' => $request->input('topic'),
       'user_id' => Auth::id(),
     ]);
     return redirect('/Forum')->with('success', 'Topic created successfully!');

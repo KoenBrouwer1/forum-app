@@ -30,9 +30,9 @@ class PostController extends Controller
     }
     // maakt een nieuwe post aan in de database
     Post::create([
-      'title' => $request->title,
-      'topic_id' => $request->topic_id,
-      'content' => $request->content,
+      'title' => $request->input('title'),
+      'topic_id' => $request->input('topic_id'),
+      'content' => $request->input('content'),
       'image' => $path,
       'user_id' => Auth::id(),
     ]);
