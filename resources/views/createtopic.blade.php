@@ -24,6 +24,12 @@
           </h1>
           <form action="{{ route('topics.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4 md:space-y-6">
             @csrf
+            <label class="text-white" for="subject_id">Choose a subject</label>
+            <select name="subject_id" id="subject_id" required class="w-full p-2.5 text-sm bg-gray-50 text-gray-900 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+              @foreach($subjects as $subject)
+                <option value="{{ $subject->id }}" class="dark:bg-gray-700 dark:text-white">{{ $subject->subject }}</option>
+              @endforeach
+            </select>
             <div>
               <input type="text" name="topic" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your topic">
             </div>

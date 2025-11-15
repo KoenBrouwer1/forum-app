@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     */
+    */
     public function run(): void
     {
+        
         User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@napper.com',
@@ -24,8 +24,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => 1,
         ]);
         
-        Topic::factory(10)->create();
-
+        
         Subject::factory()->create([
             'subject' => 'Help',
         ]);
@@ -41,5 +40,6 @@ class DatabaseSeeder extends Seeder
         Subject::factory()->create([
             'subject' => 'Tech News',
         ]);
+        Topic::factory(10)->create();
     }
 }

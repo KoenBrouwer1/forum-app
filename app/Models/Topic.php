@@ -11,6 +11,7 @@ class Topic extends Model
   // geeft aan welke velden ingevuld mogen worden
   protected $fillable = [
     'user_id',
+    'subject_id',
     'title',
     'content',
     'topic',

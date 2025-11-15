@@ -21,6 +21,7 @@ class TopicController extends Controller
   {
     // checkt of de data goed onder deze regels valt
     $request->validate([
+      'subject_id' => 'nullable|exists:subjects,id',
       'topic' => 'nullable|string|max:20',
       'title' => 'required|string|max:50',
       'content' => 'required|string|max:300',
@@ -31,6 +32,7 @@ class TopicController extends Controller
       'content' => $request->input('content'),
       'topic' => $request->input('topic'),
       'user_id' => Auth::id(),
+      'subject_id' => $request->input('subject_id'),
     ]);
     return redirect('/Forum')->with('success', 'Topic created successfully!');
   }

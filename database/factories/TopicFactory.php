@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\User;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class TopicFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
+            'subject_id' => Subject::inRandomOrder()->first()->id,
             'topic' => fake()->words(1, true),
             'title' => fake()->sentence(),
             'content' => fake()->paragraph(),

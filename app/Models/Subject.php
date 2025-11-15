@@ -11,6 +11,7 @@ class Subject extends Model
   // geeft aan welke velden ingevuld mogen worden
   protected $fillable = [
     'subject',
+    'topic_id',
   ];
   // relatie met de posts die bij het topic horen
   public function topic()

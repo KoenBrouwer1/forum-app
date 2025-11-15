@@ -51,11 +51,12 @@
 
       <!-- Search Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 text-gray-900 dark:text-white">
-        <h2 class="text-xl font-semibold mb-4">Subjects</h2>
+        <h2 class="text-xl font-bold mb-4">Subjects</h2>
         @foreach($subjects as $subject)
         <div class="mt-4 flex items-center space-x-3 cursor-pointer">
-          <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-8 h-8 rounded-full">
-          <p class="font-semibold">{{ $subject->subject }}</p>
+          <label class="cursor-pointer text-lg font-semibold">{{ $subject->subject }}
+          <input type="checkbox" class="hidden" onclick="alert(this.checked ? 'Checked' : 'Unchecked')">
+          </label>
         </div>
         @endforeach
       </div>
