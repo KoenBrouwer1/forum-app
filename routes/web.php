@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -21,19 +20,6 @@ Route::get('/Account', function () {
     return view('account');
 })->middleware(['auth', 'verified'])->name('account');
 
-Route::get('/EditProfile', function () {
-    return view('editprofile');
-})->middleware(['auth', 'verified'])->name('editprofile');
-
-Route::get('/ViewProfile', function () {
-    return view('viewprofile');
-})->middleware(['auth', 'verified'])->name('viewprofile');
-
-Route::get('/AddContact', function () {
-    return view('addcontact');
-})->middleware(['auth', 'verified'])->name('addcontact');
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -47,13 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/Forum', [PostController::class, 'postingpost'])->name('forum'); // toont posts
-    Route::get('/CreatePost', [PostController::class, 'createpost'])->name('posts.create'); // toont create form
-    Route::post('/CreatePost', [PostController::class, 'storepost'])->name('posts.store'); // slaat post op
     Route::get('/CreateTopic', [TopicController::class, 'createtopic'])->name('topics.create'); // toont create form
     Route::post('/CreateTopic', [TopicController::class, 'storetopic'])->name('topics.store'); // slaat topic op
     Route::get('/Forum', [TopicController::class, 'postingtopic'])->name('forum'); // toont topics
     Route::get('/Forum', [SubjectController::class, 'index'])->name('subjects.index'); // toont subjects
+    Route::get('/Forum/{id}', [SubjectController::class, 'show'])->name('subjects.show');
 });
 
 

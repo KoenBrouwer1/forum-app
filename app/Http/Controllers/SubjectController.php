@@ -37,9 +37,13 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Subject $subject)
+    public function show($id)
     {
-        //
+        // laad subject + topics
+        $subjects = Subject::all();
+        $subject = Subject::with('topics')->findOrFail($id);
+        $topics = $subject->topics;
+        return view('forum', compact('subject', 'topics', 'subjects'));
     }
 
     /**

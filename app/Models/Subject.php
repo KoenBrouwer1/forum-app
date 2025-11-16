@@ -11,11 +11,15 @@ class Subject extends Model
   // geeft aan welke velden ingevuld mogen worden
   protected $fillable = [
     'subject',
-    'topic_id',
   ];
-  // relatie met de posts die bij het topic horen
+  // hoeveel topics bij dit subject horen
+  public function topics()
+  {
+    return $this->hasMany(Topic::class);
+  }
   public function topic()
   {
     return $this->belongsTo(Topic::class);
   }
+
 }

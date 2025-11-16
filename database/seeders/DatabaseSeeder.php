@@ -40,6 +40,6 @@ class DatabaseSeeder extends Seeder
         Subject::factory()->create([
             'subject' => 'Tech News',
         ]);
-        Topic::factory(10)->create();
+        Topic::factory(25)->create();
     }
 }
