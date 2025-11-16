@@ -15,7 +15,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::all(); // haalt alle subjects op
         $topics = Topic::all(); // haal alle topics op uit de database
-        return view('forum', compact('subjects', 'topics'));
+        return view('forum', compact('subjects', 'topics')); // geeft de subjects en topics door aan de view
     }
 
     /**
@@ -40,10 +40,10 @@ class SubjectController extends Controller
     public function show($id)
     {
         // laad subject + topics
-        $subjects = Subject::all();
-        $subject = Subject::with('topics')->findOrFail($id);
-        $topics = $subject->topics;
-        return view('forum', compact('subject', 'topics', 'subjects'));
+        $subjects = Subject::all(); // haalt alle subjects op
+        $subject = Subject::with('topics')->findOrFail($id); // haalt het subject op met de bijbehorende topics
+        $topics = $subject->topics; // haalt de topics op die bij het subject horen
+        return view('forum', compact('subject', 'topics', 'subjects')); // geeft het subject en de topics door aan de view
     }
 
     /**

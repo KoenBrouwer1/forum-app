@@ -26,6 +26,7 @@ class Topic extends Model
   {
     return $this->belongsTo(Topic::class);
   }
+  // relatie met het subject dat bij de topic hoort
   public function subject()
   {
     return $this->belongsTo(Subject::class);

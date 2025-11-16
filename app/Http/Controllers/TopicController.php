@@ -36,10 +36,10 @@ class TopicController extends Controller
     ]);
     return redirect('/Forum')->with('success', 'Topic created successfully!');
   }
-  // haalt topids en de user op en het nieuwste eerst
+  // haalt topics en de user op en het nieuwste eerst
   public function postingtopic()
   {
-    $topics = Topic::with('user')->latest()->get();
-    return view('Forum', compact('topics'));
+    $topics = Topic::with('user')->latest()->get(); // haalt alle topics op uit de database met de bijbehorende user
+    return view('Forum', compact('topics')); // stuurt de topics door aan de view
   }
 }

@@ -12,14 +12,9 @@ class Subject extends Model
   protected $fillable = [
     'subject',
   ];
-  // hoeveel topics bij dit subject horen
+  // alle topics bij dit subject horen
   public function topics()
   {
     return $this->hasMany(Topic::class);
   }
-  public function topic()
-  {
-    return $this->belongsTo(Topic::class);
-  }
-
 }

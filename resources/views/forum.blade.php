@@ -26,7 +26,7 @@
               @else
               <span></span>
               @endif
-              <span class="text-xs text-gray-400 dark:text-gray-500">{{$topic->user->name}}</span>
+              <span class="text-xs text-gray-400 dark:text-gray-400">{{$topic->user->name}}</span>
             </div>
             
             <!-- Body -->
@@ -57,7 +57,7 @@
         <form action="{{ route('subjects.show', $subject->id) }}" method="GET">
         <div class="justify-between mt-4 flex items-center space-x-3 cursor-pointer">
           <a href="{{ route('subjects.show', $subject->id) }}">{{ $subject->subject }}</a>
-          <p class="text-xs text-gray-400 dark:text-gray-500">{{ $subject->topics->count() }} posts</p>
+          <p class="text-xs text-gray-400 dark:text-gray-400">{{ $subject->topics->count() }} posts</p>
         </div>
         </form>
         @endforeach
@@ -69,7 +69,7 @@
           <img src="{{ asset('img/Napper-logoV2.png') }}" alt="profile" class="w-20 h-20 rounded-full mx-auto mb-1">
           <a href="Account" class="block text-center font-bold mb-4">{{ Auth::user()->name }}</a>
         </div>
-        <a href="CreateTopic" class="text-center mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
+        <a href="{{ url('CreateTopic') }}" class="text-center mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
           Create Topic
         </a>
       </div>
