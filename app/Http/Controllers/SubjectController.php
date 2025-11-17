@@ -37,11 +37,11 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($subject)
     {
         // laad subject + topics
         $subjects = Subject::all(); // haalt alle subjects op
-        $subject = Subject::with('topics')->findOrFail($id); // haalt het subject op met de bijbehorende topics
+        $subject = Subject::with('topics')->where('subject', $subject)->firstOrFail(); // haalt het subject op met de bijbehorende topics
         $topics = $subject->topics; // haalt de topics op die bij het subject horen
         return view('forum', compact('subject', 'topics', 'subjects')); // geeft het subject en de topics door aan de view
     }

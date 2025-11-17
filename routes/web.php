@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/CreateTopic', [TopicController::class, 'storetopic'])->name('topics.store'); // slaat topic op
     Route::get('/Forum', [TopicController::class, 'postingtopic'])->name('forum'); // toont topics
     Route::get('/Forum', [SubjectController::class, 'index'])->name('subjects.index'); // toont subjects
-    Route::get('/Forum/{id}', [SubjectController::class, 'show'])->name('subjects.show');
+    Route::get('/Forum/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
 });
 
 

@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         
-        User::factory(10)->create();
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@napper.com',
             'password' => ('admin1234'),
             'is_admin' => 1,
         ]);
+        User::factory(10)->create();
         
         
         Subject::factory()->create([
@@ -35,11 +35,14 @@ class DatabaseSeeder extends Seeder
             'subject' => 'PC Building',
         ]);
         Subject::factory()->create([
+            'subject' => 'Hardware',
+        ]);
+        Subject::factory()->create([
             'subject' => 'Programming',
         ]);
         Subject::factory()->create([
             'subject' => 'Tech News',
         ]);
-        Topic::factory(25)->create();
+        Topic::factory(40)->create();
     }
 }

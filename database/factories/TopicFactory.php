@@ -18,7 +18,7 @@ class TopicFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory()->create()->id,
             'subject_id' => Subject::inRandomOrder()->first()->id,
             'topic' => fake()->words(1, true),
             'title' => fake()->sentence(),

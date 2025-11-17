@@ -52,14 +52,12 @@
       <!-- Search Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 text-gray-900 dark:text-white">
         <h2 class="text-xl font-bold mb-4">Subjects</h2>
-        <a href="{{ url('/Forum') }}">Deselect</a>
+        <a class="text-blue-600 font-semibold" href="{{ url('/Forum') }}">Deselect</a>
         @foreach($subjects as $subject)
-        <form action="{{ route('subjects.show', $subject->id) }}" method="GET">
         <div class="justify-between mt-4 flex items-center space-x-3 cursor-pointer">
-          <a href="{{ route('subjects.show', $subject->id) }}">{{ $subject->subject }}</a>
+          <a href="{{ route('subjects.show', $subject->subject) }}">{{ $subject->subject }}</a>
           <p class="text-xs text-gray-400 dark:text-gray-400">{{ $subject->topics->count() }} posts</p>
         </div>
-        </form>
         @endforeach
       </div>
       <!-- Profile Sidebar -->
