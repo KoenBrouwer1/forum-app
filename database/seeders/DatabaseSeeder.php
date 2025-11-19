@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
             'password' => ('admin1234'),
             'is_admin' => 1,
         ]);
+        User::factory()->create([
+            'name' => 'Guest',
+            'email' => 'guest@napper.com',
+            'password' => ('guest1234'),
+            'is_admin' => 0,
+        ]);
         User::factory(10)->create();
         
         

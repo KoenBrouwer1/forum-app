@@ -49,7 +49,7 @@
             <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
               Replies ({{ $topic->replies->count() }})
             </h2>
-              <a href="{{ route('replies.create', $topic->id) }}" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
+              <a href="{{ route('replies.create', $topic->id) }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Reply</a>
           </div>
 
           <!-- Replies List -->
@@ -58,7 +58,7 @@
             <!-- Reply Header -->
             <div class="flex items-center justify-between px-4 pt-4">
               @if($reply->user->is_admin)
-                  <span class="text-sm font-bold text-red-400">{{$reply->user->name}} (ADMINISTRATOR)</span>
+                  <span class="text-sm font-semibold text-white">{{$reply->user->name}} <span class="font-bold text-red-400">(ADMINISTRATOR)</span></span>
                   @else
                   <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{$reply->user->name}}</span>
                   @endif

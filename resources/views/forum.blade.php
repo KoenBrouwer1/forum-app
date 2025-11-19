@@ -26,7 +26,11 @@
               @else
               <span></span>
               @endif
+              @if($topic->user->is_admin)
+                  <span class="text-xs text-gray-400 dark:text-gray-400">{{$topic->user->name}} <span class="font-bold text-red-400">(ADMINISTRATOR)</span></span>
+              @else
               <span class="text-xs text-gray-400 dark:text-gray-400">{{$topic->user->name}}</span>
+              @endif
             </div>
             
             <!-- Body -->

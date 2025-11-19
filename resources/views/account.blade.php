@@ -46,7 +46,8 @@
         <div class="pt-16 pb-6 text-center">
           <h5 class="mb-2 text-xl font-medium text-gray-900 dark:text-white">{{ Auth::user()->name }}</h5>
           <h5 class="m-1 text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</h5>
-          <span class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->created_at }}</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->created_at->diffForHumans() }}</span>
+          
 
 
           <div class="flex justify-center mt-6 space-x-3">
