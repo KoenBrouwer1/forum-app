@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Napper | Forum</title>
+  <title>Napper | Topic Details</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="{{ asset('img/Napper-logoV2.png') }}">
   @include('layouts.scrollbar')
@@ -17,8 +17,9 @@
       <!-- Main content -->
       <main class="flex-1 bg-white dark:bg-gray-800 p-6 overflow-y-auto space-y-4 m-0">
         <div class="flex flex-col gap-6 p-6 w-full">
-          @foreach($topics as $topic)
-          <a href="{{ route('topics.show', $topic->id) }}" class="block bg-white dark:bg-gray-700 shadow-md hover:shadow-xl rounded-xl overflow-hidden transition">
+          
+          <!-- Original Topic Post -->
+          <div class="block bg-white dark:bg-gray-700 shadow-md rounded-xl overflow-hidden">
             <!-- Header -->
             <div class="flex items-center justify-between px-4 pt-4">
               @if($topic->topic)
@@ -31,35 +32,50 @@
             
             <!-- Body -->
             <div class="px-4 py-3 space-y-2">
-              <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 line-clamp-2">
+              <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">
                 {{$topic->title}}
               </h3>
-              <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-3">
+              <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
                 {{$topic->content}}
               </p>
-               <p class="text-xs text-gray-400 dark:text-gray-400 flex justify-end">{{ $topic->replies->count()}} replies</p>
+              <p class="text-xs text-gray-400 dark:text-gray-400 flex justify-end pt-2">
+                {{ $topic->created_at->diffForHumans() }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Replies Section Header -->
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+              Replies ({{ $topic->replies->count() }})
+            </h2>
+              <a href="Forum/{{$topic->id}}/CreateReply" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
+          </div>
+
+          <!-- Replies List -->
+          @forelse($topic->replies as $reply)
+          <div class="bg-white dark:bg-gray-700 shadow-md rounded-xl overflow-hidden">
+            <!-- Reply Header -->
+            <div class="flex items-center justify-between px-4 pt-4">
+              <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{$reply->user->name}}</span>
+              <span class="text-xs text-gray-400 dark:text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
             </div>
             
-            <!-- Footer -->
-            {{-- <div class="flex items-center justify-end px-4 py-2 border-t border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-sm">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply">
-            </div> --}}
-          </a>
-          @endforeach
+            <!-- Reply Body -->
+            <div class="px-4 py-3">
+              <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {{$reply->reply}}
+              </p>
+            </div>
+          </div>
+          @empty
+          <div class="bg-white dark:bg-gray-700 shadow-md rounded-xl p-6 text-center">
+            <p class="text-gray-500 dark:text-gray-400">No replies yet. Be the first to reply!</p>
+          </div>
+          @endforelse
+
         </div>
       </main>
-      <!-- Search Sidebar -->
-      <div class="w-1/5 bg-white dark:bg-gray-800 p-4 text-gray-900 dark:text-white">
-        <h2 class="text-xl font-bold mb-4">Subjects</h2>
-        <a class="text-blue-600 font-semibold" href="{{ url('/Forum') }}">Deselect</a>
-        @foreach($subjects as $subject)
-        <div class="justify-between mt-4 flex items-center space-x-3 cursor-pointer">
-          <a href="{{ route('subjects.show', $subject->subject) }}">{{ $subject->subject }}</a>
-          <p class="text-xs text-gray-400 dark:text-gray-400">{{ $subject->topics->count() }} posts</p>
-        </div>
-        @endforeach
-      </div>
       <!-- Profile Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-900 p-4 text-gray-900 dark:text-white flex flex-col border-r border-gray-300 dark:border-gray-600">
         <div>
@@ -71,7 +87,7 @@
           Create Topic
         </a>
         @if(Auth::check() && Auth::user()->is_admin)
-           <a href="{{ url('CreateSubject') }}" class="text-center mt-6 bg-gray-600 text-white font-semibold rounded-lg py-3">
+        <a href="{{ url('CreateSubject') }}" class="text-center mt-6 bg-gray-600 text-white font-semibold rounded-lg py-3">
           Create Subject
         </a>
         @endif
@@ -80,6 +96,5 @@
     </div>
   </div>
 </body>
-
 
 </html>

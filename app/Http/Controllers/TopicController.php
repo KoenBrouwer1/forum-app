@@ -16,7 +16,11 @@ class TopicController extends Controller
     $subjects = Subject::all(); // ← voeg dit toe
     return view('createtopic', compact('topics', 'subjects')); // stuurt de topics door aan de view
   }
-
+  public function showtopic($id)
+  {
+    $topic = Topic::with('user', 'replies.user')->findOrFail($id); // haalt het topic op met de bijbehorende user en replies
+    return view('showtopic', compact('topic')); // geeft het topic door aan de view
+  }
   public function storetopic(Request $request)
   {
     // checkt of de data goed onder deze regels valt

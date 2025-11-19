@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reply;
 use App\Models\Topic;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
@@ -13,8 +14,8 @@ class ReplyController extends Controller
      */
     public function indexreply()
     {
-        $topics = Topic::all(); // haal alle topics op uit de database
-        $replies = Reply::all(); // haal alle replies op uit de database
+        $topics = Topic::all(); // haalt alle topics op
+        $replies = Reply::all(); // haalt alle replies op uit de database
         return view('createreply', compact('topics', 'replies')); // stuurt de topics door aan de view
     }
 
@@ -24,7 +25,8 @@ class ReplyController extends Controller
     public function createreply(Topic $topic)
     {
         $replies = Reply::all(); // ← voeg dit toe
-        return view('createreply', compact('replies', 'topic')); // stuurt de topics door aan de view
+        $subjects = Subject::all(); // haalt alle subjects op
+        return view('createreply', compact('replies', 'topic', 'subjects')); // stuurt de topics door aan de view
     }
 
     /**
@@ -51,6 +53,7 @@ class ReplyController extends Controller
     public function showreply(Topic $topic)
     {
         $topic->load('replies'); // zorgt dat $topic->replies een Collection is
+        $subjects = Subject::all(); // haalt alle subjects op
         $reply = Reply::with('topics')->where('reply', $topic)->firstOrFail(); // haalt het subject op met de bijbehorende topics
         return view('topics.show', compact('topic'));
     }
