@@ -4,6 +4,7 @@ namespace App\Models;
 // files die hij gebruikt
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Reply;
 
 class Topic extends Model
 {
@@ -30,5 +31,9 @@ class Topic extends Model
   public function subject()
   {
     return $this->belongsTo(Subject::class);
+  }
+  public function replies()
+  {
+    return $this->hasMany(Reply::class);
   }
 }

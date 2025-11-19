@@ -37,8 +37,10 @@
               <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-3">
                 {{$topic->content}}
               </p>
+               <p class="text-xs text-gray-400 dark:text-gray-400 flex justify-end">{{ $topic->replies->count()}} replies</p>
             </div>
-            <a href="CreateReply" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
+
+            <a href="Forum/{{$topic->id}}/CreateReply" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
             
             <!-- Footer -->
             {{-- <div class="flex items-center justify-end px-4 py-2 border-t border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-sm">

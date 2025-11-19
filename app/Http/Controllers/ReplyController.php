@@ -21,10 +21,10 @@ class ReplyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createreply()
+    public function createreply(Topic $topic)
     {
         $replies = Reply::all(); // ← voeg dit toe
-        return view('createreply', compact('replies')); // stuurt de topics door aan de view
+        return view('createreply', compact('replies', 'topic')); // stuurt de topics door aan de view
     }
 
     /**
@@ -37,7 +37,9 @@ class ReplyController extends Controller
         ]);
         // maakt een nieuwe topic aan in de database
         Reply::create([
-            'reply' => $request->input('reply'),
+            'topic_id' => $topic->id,
+            'user_id' => $request->user()->id,
+            'body' => $request->reply,
         ]);
         return redirect('/Forum')->with('success', 'Reply created successfully!');
     }
@@ -46,9 +48,11 @@ class ReplyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reply $reply)
+    public function showreply(Topic $topic)
     {
-        //
+        $topic->load('replies'); // zorgt dat $topic->replies een Collection is
+        $reply = Reply::with('topics')->where('reply', $topic)->firstOrFail(); // haalt het subject op met de bijbehorende topics
+        return view('topics.show', compact('topic'));
     }
 
     /**

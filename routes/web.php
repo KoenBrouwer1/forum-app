@@ -35,7 +35,7 @@ Route::get('/CreateSubject', function () {
 
 Route::get('/CreateReply', function () {
     return view('createreply');
-})->middleware(['auth'])->name('createreply');
+})->middleware(['auth', 'verified'])->name('createreply');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -48,9 +48,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/Forum/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
     Route::post('/CreateSubject', [SubjectController::class, 'createsubject'])->name('subjects.create'); // slaat subject op
     Route::post('/CreateSubject', [SubjectController::class, 'storesubject'])->name('subjects.store'); // slaat subject op
-    Route::get('/CreateReply', [ReplyController::class, 'createreply'])->name('replies.create'); // toont create form
-    Route::post('/CreateReply', [ReplyController::class, 'storereply'])->name('replies.store'); // slaat reply op
-    Route::post('/CreateReply', [ReplyController::class, 'indexreply'])->name('replies.index'); // toont replies
+    Route::get('/Forum/{id}/CreateReply', [ReplyController::class, 'createreply'])->name('replies.create'); // toont create form
+    Route::post('/Forum/{id}/CreateReply', [ReplyController::class, 'storereply'])->name('replies.store'); // slaat reply op
+    Route::post('/Forum', [ReplyController::class, 'indexreply'])->name('replies.index'); // toont replies
+    Route::post('/Forum', [ReplyController::class, 'showreply'])->name('replies.show'); // toont replies
+
 
 
 
