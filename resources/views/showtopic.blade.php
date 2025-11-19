@@ -49,7 +49,7 @@
             <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
               Replies ({{ $topic->replies->count() }})
             </h2>
-              <a href="Forum/{{$topic->id}}/CreateReply" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
+              <a href="{{ route('replies.create', $topic->id) }}" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
           </div>
 
           <!-- Replies List -->
@@ -57,7 +57,11 @@
           <div class="bg-white dark:bg-gray-700 shadow-md rounded-xl overflow-hidden">
             <!-- Reply Header -->
             <div class="flex items-center justify-between px-4 pt-4">
-              <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{$reply->user->name}}</span>
+              @if($reply->user->is_admin)
+                  <span class="text-sm font-bold text-red-400">{{$reply->user->name}} (ADMINISTRATOR)</span>
+                  @else
+                  <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{$reply->user->name}}</span>
+                  @endif
               <span class="text-xs text-gray-400 dark:text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
             </div>
             

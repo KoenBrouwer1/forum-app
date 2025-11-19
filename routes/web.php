@@ -41,10 +41,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/Forum/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
     Route::post('/CreateSubject', [SubjectController::class, 'createsubject'])->name('subjects.create'); // slaat subject op
     Route::post('/CreateSubject', [SubjectController::class, 'storesubject'])->name('subjects.store'); // slaat subject op
-    Route::get('/Forum/{id}/CreateReply', [ReplyController::class, 'createreply'])->name('replies.create'); // toont create form
-    Route::post('/Showtopic/{id}/CreateReply', [ReplyController::class, 'storereply'])->name('replies.store'); // slaat reply op
+    Route::get('/CreateReply/{id}', [ReplyController::class, 'createreply'])->name('replies.create');
+    Route::post('/CreateReply/{id}', [ReplyController::class, 'storereply'])->name('replies.store');
     Route::post('/Forum', [ReplyController::class, 'indexreply'])->name('replies.index'); // toont replies
-    Route::post('/Forum', [ReplyController::class, 'showreply'])->name('replies.show'); // toont replies
+    Route::post('/Showtopic', [ReplyController::class, 'showreply'])->name('replies.show'); // toont replies
 
 
 

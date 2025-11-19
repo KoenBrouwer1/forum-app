@@ -6,6 +6,7 @@ use App\Models\Reply;
 use App\Models\Topic;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReplyController extends Controller
 {
@@ -22,27 +23,29 @@ class ReplyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createreply(Topic $topic)
-    {
-        $replies = Reply::all(); // ← voeg dit toe
-        $subjects = Subject::all(); // haalt alle subjects op
-        return view('createreply', compact('replies', 'topic', 'subjects')); // stuurt de topics door aan de view
+    public function createreply($id)
+    { {
+        $topic = Topic::findOrFail($id); // haalt het topic op basis van de gegeven id
+            return view('createreply', compact('topic'));
+        }
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storereply(Request $request)
+    public function storereply(Topic $topic, Request $request)
     {
         $request->validate([
-            'reply' => 'required|string|max:200',
+            'topic_id' => 'required|exists:topics,id',
+            'reply' => 'required|string',
         ]);
-        // maakt een nieuwe topic aan in de database
         Reply::create([
-            'topic_id' => $topic->id,
-            'user_id' => $request->user()->id,
-            'body' => $request->reply,
+            'topic_id' => $request->input('topic_id'),
+            'user_id' => Auth::id(),
+            'reply' => $request->reply,
         ]);
+
         return redirect('/Forum')->with('success', 'Reply created successfully!');
     }
     
@@ -50,7 +53,7 @@ class ReplyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showreply(Topic $topic)
+    public function showreply(Topic $topic, $id)
     {
         $topic->load('replies'); // zorgt dat $topic->replies een Collection is
         $subjects = Subject::all(); // haalt alle subjects op

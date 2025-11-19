@@ -24,20 +24,25 @@
           </h1>
           <form action="{{ route('replies.store', $topic->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 md:space-y-6">
             @csrf
+            
+            <!-- Hidden field for topic_id -->
+            <input type="hidden" name="topic_id" value="{{ $topic->id }}">
+            
+            <!-- Textarea for the actual comment -->
             <div>
-              <input type="text" name="reply" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="New subject">
+              <label for="reply" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Comment</label>
+              <textarea name="reply" id="reply" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your comment here..." required></textarea>
             </div>
+            
             <div class="flex justify-end mt-6">
               <a href="/" type="button" class="mr-auto text-white font-bold rounded-lg py-3 px-4">Cancel</a>
-              <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3 px-4 inline-flex items-center">post</button>
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3 px-4 inline-flex items-center">Post</button>
             </div>
-            <div>
           </form>
         </div>
       </div>
     </div>
   </section>
-</body>
 </body>
 
 </html>
