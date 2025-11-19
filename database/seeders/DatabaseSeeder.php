@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Topic;
+use App\Models\Reply;
 use App\Models\Subject;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -47,5 +48,7 @@ class DatabaseSeeder extends Seeder
             'subject' => 'Game News',
         ]);
         Topic::factory(40)->create();
+        Reply::factory(100)->create();
     }
+
 }

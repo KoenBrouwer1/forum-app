@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
@@ -26,8 +27,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/Admin', function () {
     return view('admin');
-})->middleware(['auth', 'verified'])->name('admin');
+})->middleware(['auth', 'admin', 'verified'])->name('admin');
 
+Route::get('/CreateSubject', function () {
+    return view('createsubject');
+})->middleware(['auth', 'admin'])->name('createsubject');
+
+Route::get('/CreateReply', function () {
+    return view('createreply');
+})->middleware(['auth'])->name('createreply');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,6 +46,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/Forum', [TopicController::class, 'postingtopic'])->name('forum'); // toont topics
     Route::get('/Forum', [SubjectController::class, 'index'])->name('subjects.index'); // toont subjects
     Route::get('/Forum/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
+    Route::post('/CreateSubject', [SubjectController::class, 'createsubject'])->name('subjects.create'); // slaat subject op
+    Route::post('/CreateSubject', [SubjectController::class, 'storesubject'])->name('subjects.store'); // slaat subject op
+    Route::get('/CreateReply', [ReplyController::class, 'createreply'])->name('replies.create'); // toont create form
+    Route::post('/CreateReply', [ReplyController::class, 'storereply'])->name('replies.store'); // slaat reply op
+    Route::post('/CreateReply', [ReplyController::class, 'indexreply'])->name('replies.index'); // toont replies
+
+
+
 });
 
 

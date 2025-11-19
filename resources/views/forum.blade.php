@@ -30,7 +30,7 @@
             </div>
             
             <!-- Body -->
-            <div class="px-4 py-3">
+            <div class="px-4 py-3 space-y-2">
               <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 line-clamp-2">
                 {{$topic->title}}
               </h3>
@@ -38,17 +38,17 @@
                 {{$topic->content}}
               </p>
             </div>
+            <a href="CreateReply" class="text-blue-600 flex justify-end cursor-pointer">Reply</a>
             
             <!-- Footer -->
-            <div class="flex items-center justify-end px-4 py-2 border-t border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-sm">
-              {{-- <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply"> --}}
-            </div>
+            {{-- <div class="flex items-center justify-end px-4 py-2 border-t border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-sm">
+              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like">
+              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply">
+            </div> --}}
           </a>
           @endforeach
         </div>
       </main>
-
       <!-- Search Sidebar -->
       <div class="w-1/5 bg-white dark:bg-gray-800 p-4 text-gray-900 dark:text-white">
         <h2 class="text-xl font-bold mb-4">Subjects</h2>
@@ -70,6 +70,11 @@
         <a href="{{ url('CreateTopic') }}" class="text-center mt-6 bg-blue-600 hover:bg-blue-700 active:scale-95 transition text-white font-semibold rounded-lg py-3">
           Create Topic
         </a>
+        @if(Auth::check() && Auth::user()->is_admin)
+           <a href="{{ url('CreateSubject') }}" class="text-center mt-6 bg-gray-600 text-white font-semibold rounded-lg py-3">
+          Create Subject
+        </a>
+        @endif
       </div>
 
     </div>
