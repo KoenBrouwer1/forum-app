@@ -95,6 +95,9 @@
           Create Subject
         </a>
         @endif
+          <a href="/" class="text-center text-red-600 mt-6 transition hover:underline font-bold rounded-lg py-3">
+          Back
+        </a>
       </div>
 
     </div>
