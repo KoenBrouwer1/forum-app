@@ -34,7 +34,7 @@ class ReplyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function storereply(Topic $topic, Request $request)
+    public function storereply(Request $request)
     {
         $request->validate([
             'topic_id' => 'required|exists:topics,id',
@@ -46,7 +46,7 @@ class ReplyController extends Controller
             'reply' => $request->reply,
         ]);
 
-        return redirect('/Forum')->with('success', 'Reply created successfully!');
+        return redirect()->back()->with('success', 'Reply created successfully.');
     }
     
 

@@ -49,18 +49,29 @@
             <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
               Replies ({{ $topic->replies->count() }})
             </h2>
-              <a href="{{ route('replies.create', $topic->id) }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Reply</a>
           </div>
 
           <!-- Replies List -->
+           <form action="{{ route('replies.store', $topic->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 md:space-y-6">
+            @csrf
+            
+            <!-- Hidden field for topic_id -->
+            <input type="hidden" name="topic_id" value="{{ $topic->id }}">
+            
+            <!-- Textarea for the actual comment -->
+            <div>
+              <label for="reply" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Comment</label>
+              <textarea name="reply" id="reply" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your comment here..." required></textarea>
+            </div>
+            <button type="submit" class="text-white bg-gray-600 p-2 rounded">Reply</button>
           @forelse($topic->replies as $reply)
           <div class="bg-white dark:bg-gray-700 shadow-md rounded-xl overflow-hidden">
             <!-- Reply Header -->
             <div class="flex items-center justify-between px-4 pt-4">
               @if($reply->user->is_admin)
-                  <span class="text-sm font-semibold text-white">{{$reply->user->name}} <span class="font-bold text-red-400">(ADMINISTRATOR)</span></span>
+                  <span class="text-sm font-semibold dark:text-gray-300">{{$reply->user->name}} <span class="font-bold text-red-400">(ADMINISTRATOR)</span></span>
                   @else
-                  <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{$reply->user->name}}</span>
+                  <span class="text-sm font-semibold dark:text-gray-300">{{$reply->user->name}}</span>
                   @endif
               <span class="text-xs text-gray-400 dark:text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
             </div>

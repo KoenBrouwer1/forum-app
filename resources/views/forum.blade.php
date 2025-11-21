@@ -43,12 +43,6 @@
               </p>
                <p class="text-xs text-gray-400 dark:text-gray-400 flex justify-end">{{ $topic->replies->count()}} replies</p>
             </div>
-            
-            <!-- Footer -->
-            {{-- <div class="flex items-center justify-end px-4 py-2 border-t border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 text-sm">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/likepost.png') }}" alt="like">
-              <img class="w-10 h-10 cursor-pointer" src="{{ asset('img/replypost.png') }}" alt="reply">
-            </div> --}}
           </a>
           @endforeach
         </div>
